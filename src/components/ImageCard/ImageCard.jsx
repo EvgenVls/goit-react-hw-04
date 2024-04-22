@@ -1,3 +1,7 @@
 export default function ImageCard({ url, descr }) {
-  return <img src={url} alt={descr} />;
+  return (
+    <div>
+      <img src={url.small} alt={descr} />
+    </div>
+  );
 }
