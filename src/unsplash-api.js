@@ -13,5 +13,5 @@ export const featchPhotos = async (title, currentPage) => {
       page: currentPage,
     },
   });
-  return response.data.results;
+  return response.data;
 };

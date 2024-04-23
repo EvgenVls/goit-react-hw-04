@@ -1,15 +1,13 @@
 import ImageCard from "../ImageCard/ImageCard";
 
-export default function ImageGallery({ items }) {
+export default function ImageGallery({ items, openInModal }) {
   return (
     <ul>
-      {items.map((item) => {
-        return (
-          <li key={item.id}>
-            <ImageCard url={item.urls} descr={item.description} />
-          </li>
-        );
-      })}
+      {items.map(({ id, urls, description }) => (
+        <li key={id}>
+          <ImageCard url={urls} descr={description} openInModal={openInModal} />
+        </li>
+      ))}
     </ul>
   );
 }

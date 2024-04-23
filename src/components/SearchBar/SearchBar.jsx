@@ -1,10 +1,12 @@
+import toast, { Toaster } from "react-hot-toast";
+
 export default function SearchBar({ onSearch }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const searchParam = form.elements.searchField.value;
     if (searchParam === "") {
-      alert("Please enter search term!");
+      toast.error("Please enter search term!");
       return;
     }
     onSearch(searchParam);
@@ -20,6 +22,7 @@ export default function SearchBar({ onSearch }) {
           placeholder="Search images and photos"
         />
         <button>Search</button>
+        <Toaster />
       </form>
     </header>
   );

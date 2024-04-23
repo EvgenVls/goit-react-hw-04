@@ -5,6 +5,7 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "../ImageModal/ImageModal";
 
 import "./App.css";
 
@@ -12,8 +13,10 @@ function App() {
   const [photoCollection, setPhotoCollection] = useState([]);
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
+  const [showBtn, setShowBtn] = useState(false);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSearch = (newQuery) => {
     setQuery(newQuery);
@@ -34,9 +37,10 @@ function App() {
         setLoader(true);
         setError(false);
         const data = await featchPhotos(query, page);
-        console.log(data);
+        setShowBtn(data.total_pages > page);
+
         setPhotoCollection((prevPhotos) => {
-          return [...prevPhotos, ...data];
+          return [...prevPhotos, ...data.results];
         });
       } catch (error) {
         setError(true);
@@ -47,15 +51,20 @@ function App() {
     getPhotos();
   }, [query, page]);
 
+  const onShowModal = () => {
+    setShowModal();
+  };
+
   return (
     <>
       <SearchBar onSearch={handleSearch} />
       {error && <ErrorMessage />}
-      {photoCollection.length > 0 && <ImageGallery items={photoCollection} />}
-      {loader && <Loader />}
-      {photoCollection.length > 0 && loader && (
-        <LoadMoreBtn onClick={handleLoadMore} />
+      {photoCollection.length > 0 && (
+        <ImageGallery items={photoCollection} openInModal={onShowModal} />
       )}
+      {loader && <Loader />}
+      {showBtn && !loader && <LoadMoreBtn onLoadMore={handleLoadMore} />}
+      <ImageModal modalIsOpen={showModal} />
     </>
   );
 }

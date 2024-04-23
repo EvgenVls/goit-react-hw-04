@@ -1,7 +1,7 @@
-export default function ImageCard({ url, descr }) {
+export default function ImageCard({ id, url, descr, openInModal }) {
   return (
     <div>
-      <img src={url.small} alt={descr} />
+      <img src={url.small} alt={descr} onClick={() => openInModal(id)} />
     </div>
   );
 }
