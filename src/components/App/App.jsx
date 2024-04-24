@@ -17,6 +17,7 @@ function App() {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [photoForModal, setPhotoForModal] = useState({});
 
   const handleSearch = (newQuery) => {
     setQuery(newQuery);
@@ -51,8 +52,11 @@ function App() {
     getPhotos();
   }, [query, page]);
 
-  const onShowModal = () => {
-    setShowModal();
+  const onShowModal = (photoId) => {
+    setPhotoForModal(() => {
+      return photoCollection.find((photo) => photo.id === photoId);
+    });
+    setShowModal(true);
   };
 
   return (
@@ -64,7 +68,7 @@ function App() {
       )}
       {loader && <Loader />}
       {showBtn && !loader && <LoadMoreBtn onLoadMore={handleLoadMore} />}
-      <ImageModal modalIsOpen={showModal} />
+      {showModal && <ImageModal obj={photoForModal} />}
     </>
   );
 }

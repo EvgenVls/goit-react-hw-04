@@ -5,7 +5,12 @@ export default function ImageGallery({ items, openInModal }) {
     <ul>
       {items.map(({ id, urls, description }) => (
         <li key={id}>
-          <ImageCard url={urls} descr={description} openInModal={openInModal} />
+          <ImageCard
+            id={id}
+            url={urls}
+            descr={description}
+            openInModal={openInModal}
+          />
         </li>
       ))}
     </ul>
