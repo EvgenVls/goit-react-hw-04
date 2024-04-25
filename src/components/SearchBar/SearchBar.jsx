@@ -1,4 +1,6 @@
 import toast, { Toaster } from "react-hot-toast";
+import { HiOutlineSearch } from "react-icons/hi";
+import css from "./SearchBar.module.css";
 
 export default function SearchBar({ onSearch }) {
   const handleSubmit = (event) => {
@@ -14,9 +16,11 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
-        <button>Search</button>
+    <header className={css.searchHeader}>
+      <form className={css.searchForm} onSubmit={handleSubmit}>
+        <button>
+          <HiOutlineSearch />
+        </button>
         <input
           type="text"
           name="searchField"
