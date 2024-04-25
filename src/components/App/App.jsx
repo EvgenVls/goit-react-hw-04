@@ -68,7 +68,9 @@ function App() {
       )}
       {loader && <Loader />}
       {showBtn && !loader && <LoadMoreBtn onLoadMore={handleLoadMore} />}
-      {showModal && <ImageModal obj={photoForModal} />}
+      {showModal && (
+        <ImageModal obj={photoForModal} modalIsOpen={setShowModal} />
+      )}
     </>
   );
 }

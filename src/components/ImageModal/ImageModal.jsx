@@ -1,15 +1,33 @@
-// import Modal from "react-modal";
+import Modal from "react-modal";
 
-// Modal.setAppElement("#root");
+Modal.setAppElement("#root");
 
-// export default function ImageModal(url, descr, modalIsOpen) {
-//   return (
-//     <Modal isOpen={modalIsOpen}>
-//       <img src={url} alt={descr} />
-//     </Modal>
-//   );
-// }
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
-export default function ImageModal({ obj: { urls } }) {
-  return <img src={urls.regular} alt="" />;
+export default function ImageModal({
+  obj: { urls, description },
+  modalIsOpen,
+}) {
+  function openModal() {
+    modalIsOpen(true);
+  }
+
+  function closeModal() {
+    modalIsOpen(false);
+  }
+
+  return (
+    <Modal isOpen={openModal} onRequestClose={closeModal} style={customStyles}>
+      <img src={urls.regular} alt={description} />
+    </Modal>
+  );
 }

@@ -16,12 +16,12 @@ export default function SearchBar({ onSearch }) {
   return (
     <header>
       <form onSubmit={handleSubmit}>
+        <button>Search</button>
         <input
           type="text"
           name="searchField"
           placeholder="Search images and photos"
         />
-        <button>Search</button>
         <Toaster />
       </form>
     </header>
