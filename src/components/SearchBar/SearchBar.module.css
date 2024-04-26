@@ -1,7 +1,11 @@
-.searchHeader {
+.searchForm {
   background-color: blueviolet;
 }
 
-.searchForm {
-  background-color: blueviolet;
+.searchField {
+  background-color: #fafafa;
+}
+
+.searchBtn {
+  background-color: #fafafa;
 }

@@ -16,12 +16,13 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <header className={css.searchHeader}>
+    <header>
       <form className={css.searchForm} onSubmit={handleSubmit}>
-        <button>
+        <button className={css.searchBtn}>
           <HiOutlineSearch />
         </button>
         <input
+          className={css.searchField}
           type="text"
           name="searchField"
           placeholder="Search images and photos"
