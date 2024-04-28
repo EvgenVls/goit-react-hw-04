@@ -12,11 +12,11 @@ export default function SearchBar({ onSearch }) {
       return;
     }
     onSearch(searchParam);
-    form.reset();
+
   };
 
   return (
-    <header>
+    <header className={css.pageHeader}>
       <form className={css.searchForm} onSubmit={handleSubmit}>
         <button className={css.searchBtn}>
           <HiOutlineSearch />
@@ -27,7 +27,7 @@ export default function SearchBar({ onSearch }) {
           name="searchField"
           placeholder="Search images and photos"
         />
-        <Toaster />
+        <Toaster position="top-right" />
       </form>
     </header>
   );

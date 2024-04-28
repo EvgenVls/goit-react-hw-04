@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import { HiOutlineThumbUp } from "react-icons/hi";
 
 Modal.setAppElement("#root");
 
@@ -14,7 +15,7 @@ const customStyles = {
 };
 
 export default function ImageModal({
-  obj: { urls, description },
+  obj: { urls, description_alt, description, likes },
   modalIsOpen,
 }) {
   function openModal() {
@@ -27,7 +28,10 @@ export default function ImageModal({
 
   return (
     <Modal isOpen={openModal} onRequestClose={closeModal} style={customStyles}>
-      <img src={urls.regular} alt={description} />
+      <img src={urls.regular} alt={description_alt} />
+      <p>
+        {description} <HiOutlineThumbUp /> {likes}
+      </p>
     </Modal>
   );
 }

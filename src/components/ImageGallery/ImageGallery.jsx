@@ -1,10 +1,11 @@
 import ImageCard from "../ImageCard/ImageCard";
+import css from "./ImageGallery.module.css";
 
 export default function ImageGallery({ items, openInModal }) {
   return (
-    <ul>
+    <ul className={css.imageList}>
       {items.map(({ id, urls, description }) => (
-        <li key={id}>
+        <li className={css.imageListItem} key={id}>
           <ImageCard
             id={id}
             url={urls}
